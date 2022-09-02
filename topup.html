@@ -1,1 +1,246 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #21252B;
+            font-family: 'Prompt', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            min-height: 100vh;
+        }
+
+        .card-img {
+            max-width: 125px;
+            padding: 2px;
+        }
+
+        .card-header {
+            background-color: #6500F1;
+        }
+
+        small {
+            font-size: smaller;
+            color: #b2bccc;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            background-color: #dfeeff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-header text-center">
+                <img src="https://img.in.th/images/fe3ab1626f4dae33ddbb7ff68ce8af9e.jpg" class="card-img-top card-img" alt="...">
+            </div>
+
+            <div class="card-body">
+                <div class="row justify-content-center m-3">
+                    <div class="col align-middle text-center col-md-5 textbox m-1">
+                        <div class="m-3">
+                            <img src="https://img.in.th/images/e3155c139ed7fad3f7befa2ed3a5f5d9.png" alt="" height=100vw>
+                            <p class="text-sm-center  mt-2">ธนาคาร ไทยพาณิชย์</p>
+                            <p class="text-lg-center"><strong id="bankNo">4331042185</strong></p>
+                            <p class="text-md-center">สุจารี ชัยปัญญา</p>
+                            <button class="btn" onclick="copy('bank')">
+                                <i class="fas fa-copy text-danger"></i>
+                                <span style="color: orange;">&ensp;คัดลอก</span>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="col align-middle text-center col-md-5 textbox m-1">
+                        <div class="m-3">
+                            <img src="http://img.in.th/images/f8deb09d2e55b154b649a0e4a07c85ba.png" alt="" height=100vh>
+                            <p class="text-sm-center">ทรูมันนี่วอลเล็ท</p>
+                            <p class="text-lg-center"><strong id="walletNo">0837029521</strong></p>
+                            <p class="text-md-center mt-2">ชัยยศ ชัยภมรกิจเจริญ</p>
+                            <button class="btn" onclick="copy('wallet')">
+                                <i class="fas fa-copy text-danger"></i>
+                                <span style="color: orange;">&ensp;คัดลอก</span>
+                            </button>
+                        </div>
+
+                    </div>
+                    <div class="toast align-items-center align-self-center bg-danger text-light" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                ค้ดลอกสู่คลิปบอร์ดแล้ว
+                            </div>
+                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <form id="mainform">
+                        <div class="row align-items-center mx-2">
+                            <div class="col-md-3">User</div>
+                            <div class="col">
+                                <input type="text" name="user" id="user" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col"><small class="">&nbsp&nbsp;&nbsp;&nbsp;(ใส่ User ที่ถูกต้อง)</small></div>
+                        </div>
+                        <div class="row align-items-center mx-2 mt-3 mt-md-3">
+                            <div class="col-md-3">จำนวนเงิน</div>
+                            <div class="col">
+                                <input type="number" name="amount" id="amount" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col"><small class="">&nbsp&nbsp;&nbsp;&nbsp;(ใส่จำนวนเงินที่ถูกต้อง)</small></div>
+                        </div>
+                        <div class="row align-items-center mx-2 mt-3 mt-md-3">
+                            <div class="col-md-3">โปรดเลือกโปรโมชัน</div>
+                            <div class="col">
+                                <select type="text" name="promotion" id="promotion" class="form-control" required>
+                                    <option value="aa">เลือก...</option>
+                                <option value="ไม่รับโปร">ไม่รับโปร</option>
+                                <option value="ฝากสด50รับ100เครดิต">ฝากสด50รับ100เครดิต</option>
+                                <option value="ฝากสด100รับ200เครดิต">ฝากสด100รับ200เครดิต</option>
+                                <option value="ฝากสด300รับ600เครดิต">ฝากสด300รับ600เครดิต</option>
+                                <option value="ฝากสด500รับ1000เครดิต">ฝากสด500รับ1000เครดิต</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mx-2 mt-3 mt-md-3">
+                            <div class="col-md-3">อัพโหลดใบสลิป</div>
+                            <div class="col">
+                                <input type="file" name="slip" id="slip" class="form-control" accept="image/*" required>
+                            </div>
+                        </div>
+                        <div class="row align-items-center mx-2 mt-3 mt-md-3">
+                            <div class="col-md-3">
+                                <img alt="..." class="img-fluid" style="display: none;" id="img-preview">
+                            </div>
+                        </div>
+
+
+                        <div class="row align-items-center mx-2 mt-3 mt-md-3">
+                            <div class="col">
+                                <a href="https://lin.ee/Q9uDuZG"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="ADD FRIEND" width="150" border="0"></a>
+                        </div>
+                        </div>
+                        <div class="row justify-content-center mt-4">
+                            <div class="col text-center">
+                                <button type="submit" class="btn btn-primary btn-lg" style="min-width: 200px; border-radius: 10rem;">ส่งข้อมูล</button>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-4">
+                            <div class="col text-center text-secondary">
+                                <i class="bi bi-exclamation-circle-fill"></i>
+                                คุณลูกค้ากรอกข้อมูลสมัครสมาชิกเรียบร้อยแล้วกดปุ่ม <span class="text-primary">"สีฟ้า" เพื่อส่งข้อมูล กรุณา add line แชทหาแอดมิน @168funclub</span> เพื่อรับ user คะ
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <script>
+                $('#mainform').on('submit', function () {
+                    event.preventDefault()
+                    let formdata = $(this).serializeArray()
+                    let data = {}
+                    for (let i of formdata) {
+                        data[i.name] = i.value
+                    }
+                    data.imgfile = JSON.stringify(imgfile)
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'กำลังส่งข้อมูล',
+                        text: 'กรุณารอสักครู่',
+                        allowOutsideClick: false
+                    })
+                    Swal.showLoading(Swal.getConfirmButton())
+                    $.post('https://script.google.com/macros/s/AKfycbwWcfHAWcxtpJuP6hoIyebACfrKZIy1oe_f9fg_oj9FSMqrxjvcV592aHfHoXLru21HSQ/exec', data, function (res) {
+                        if (res.status == 'success') {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'บันทึกสำเร็จ',
+                                showConfirmButton: false,
+                                allowOutsideClick: false,
+                                timer: 1500
+                            }).then(() => {
+                                window.location = 'https://line.me/R/ti/p/@000kykug'
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'บันทึกไม่สำเร็จ',
+                                confirmButtonText: 'ตกลง',
+                            })
+                        }
+                    })
+                })
+            </script>
+            <script>
+                var imgfile = {}
+                $(document).ready(() => {
+                    $('#slip').change(function () {
+                        let file = $(this)[0].files[0]
+                        let reader = new FileReader()
+                        reader.onloadend = function (e) {
+                            imgfile.data = e.target.result
+                            imgfile.name = file.name
+                            $('#img-preview').attr('src', e.target.result)
+                            $('#img-preview').show()
+                        }
+                        reader.readAsDataURL(file)
+                    })
+                })
+            </script>
+            <script>
+                var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+                var toastList = toastElList.map(function (toastEl) {
+                    return new bootstrap.Toast(toastEl, {
+                        delay: 2000
+                    })
+                })
+
+                function copy(element) {
+                    let $temp
+                    if (element == 'bank') {
+                        $temp = $('<input>')
+                        $('body').append($temp)
+                        $temp.val($('#bankNo').html()).select()
+                    } else {
+                        $temp = $('<input>')
+                        $('body').append($temp)
+                        $temp.val($('#walletNo').html()).select()
+                    }
+
+                    document.execCommand('copy')
+                    $temp.remove()
+                    toastList[0].show()
+                }
+            </script>
+
+
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
